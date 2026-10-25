@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Design tokens
+   Everything visual is a token. Components never hard-code a colour, so the
+   whole site (including every tint, glow and hairline) follows the theme.
+
+   Colours that need transparency are stored as raw channels and used as
+   rgb(var(--fg-rgb) / .08) — the modern syntax keeps one source of truth.
+   ========================================================================== */
+@layer tokens {
+  :root {
+    color-scheme: dark;
+
+    /* channels */
+    --bg-rgb: 8 9 12;
+    --fg-rgb: 255 255 255; /* the colour that sits *on* surfaces: white on dark, ink on light */
+    --gold-rgb: 239 178 74;
+    --gold-ink-rgb: 239 178 74; /* gold as a stroke/glow that must stay visible (darker on light) */
+
+    /* surfaces */
+    --bg: #08090c;
+    --bg-2: #0c0e12;
+    --surface: #111319;
+    --surface-2: #171a21;
+    --surface-3: #1e222b;
+
+    /* hairlines */
+    --line: rgb(var(--fg-rgb) / 0.075);
+    --line-2: rgb(var(--fg-rgb) / 0.14);
+    --line-3: rgb(var(--fg-rgb) / 0.24);
+
+    /* text */
+    --fg: #f4f1ea;
+    --fg-dim: #a3a8b4;
+    --fg-mute: #868d9b;
+    --fg-subtle: #8a909d;
+    --fg-prose: #c9cdd6;
+
+    /* brand gold: --gold fills things; --gold-text is gold used as text or a thin stroke */
+    --gold: #efb24a;
+    --gold-hi: #f7d38c;
+    --gold-lo: #c98b2b;
+    --gold-text: var(--gold);
+    --gold-text-hi: var(--gold-hi);
+    --on-gold: #140f06;
+    --gold-soft: rgb(var(--gold-rgb) / 0.12);
+    --logo-a: #ffd98a;
+    --logo-b: #e8960f;
+    --gold-grad: linear-gradient(135deg, var(--gold-hi), var(--gold) 60%, var(--gold-lo));
+
+    /* feedback */
+    --danger: #e5484d;
+    --danger-text: #ff6b6f;
+
+    /* product-frame chrome */
+    --frame-bg: #0d0f14;
+    --frame-bar: #15181f;
+    --frame-fg: var(--fg-mute);
+    --frame-shadow: 0 -20px 60px -30px rgb(0 0 0 / 0.9);
+
+    /* elevation + effects */
+    --shadow: 0 30px 60px -30px rgb(0 0 0 / 0.8);
+    --device-shadow: 0 40px 100px -40px rgb(0 0 0 / 0.9);
+    --spot: rgb(var(--gold-rgb) / 0.07);
+    --grain: 0.035;
+
+    /* type */
+    --font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-serif: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, 'Times New Roman', serif;
+
+    /* shape + layout */
+    --radius-sm: 10px;
+    --radius: 16px;
+    --radius-lg: 24px;
+    --container: 1200px;
+    --nav-h: 76px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Light theme: warm paper, same gold. Selected with <html data-theme="light">. */
+  :root[data-theme='light'] {
+    color-scheme: light;
+
+    --bg-rgb: 250 248 244;
+    --fg-rgb: 20 24 34;
+    --gold-ink-rgb: 154 98 0;
+
+    --bg: #faf8f4;
+    --bg-2: #f3f0e9;
+    --surface: #ffffff;
+    --surface-2: #f6f3ec;
+    --surface-3: #ece8df;
+
+    --fg: #14161b;
+    --fg-dim: #4b5160;
+    --fg-mute: #646b7a;
+    --fg-subtle: #5d6472;
+    --fg-prose: #2b303a;
+
+    --gold-text: #8a5700;
+    --gold-text-hi: #6b4200;
+    --logo-a: #c98b2b;
+    --logo-b: #7a4b00;
+
+    --danger: #c9302c;
+    --danger-text: #b42318;
+
+    --frame-bg: #e9e5db;
+    --frame-bar: #dfdacd;
+    --frame-fg: #4b5160;
+    --frame-shadow: 0 -20px 60px -30px rgb(70 50 10 / 0.28);
+
+    --shadow: 0 30px 60px -30px rgb(60 44 10 / 0.28);
+    --device-shadow: 0 40px 90px -40px rgb(50 36 8 / 0.45);
+    --spot: rgb(var(--gold-rgb) / 0.12);
+    --grain: 0.03;
+  }
+
+  /* Respect "increase contrast": stronger hairlines and secondary text, both themes */
+  @media (prefers-contrast: more) {
+    :root,
+    :root[data-theme='light'] {
+      --line: rgb(var(--fg-rgb) / 0.4);
+      --line-2: rgb(var(--fg-rgb) / 0.6);
+      --line-3: rgb(var(--fg-rgb) / 0.8);
+      --fg-dim: color-mix(in srgb, var(--fg) 92%, var(--bg));
+      --fg-mute: color-mix(in srgb, var(--fg) 80%, var(--bg));
+    }
+  }
+}

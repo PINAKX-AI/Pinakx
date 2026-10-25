@@ -1,0 +1,16 @@
+/* Cascade layers, lowest to highest priority. Declared once, first, so the order is explicit.
+   Template previews (.tpl) and product screens (.scr) are deliberately left unlayered:
+   they are self-contained design systems that must never be overridden by site styles. */
+@layer tokens, base, layout, components, pages, utilities, motion;
+
+@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --wm {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0.09;
+}

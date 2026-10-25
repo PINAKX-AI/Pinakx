@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PinakXAI is a digital product studio in India. We design and build websites, mobile apps and AI solutions, and run the marketing that helps them grow."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#08090c" />
+    <script>
+      /* Apply the saved theme before first paint. Dark is the brand default. */
+      try {
+        var t = localStorage.getItem('theme')
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.dataset.theme = t
+          if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#faf8f4')
+        }
+      } catch (e) {}
+    </script>
+    <meta property="og:title" content="PinakXAI — Digital products for a brighter tomorrow" />
+    <meta
+      property="og:description"
+      content="Websites, mobile apps, AI solutions and digital marketing for growing businesses."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PinakXAI" />
+    <meta property="og:url" content="https://pinakxai.com" />
+    <meta property="og:image" content="https://pinakxai.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://pinakxai.com" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PinakXAI",
+        "url": "https://pinakxai.com",
+        "logo": "https://pinakxai.com/icon-512.png",
+        "email": "hello@pinakxai.com",
+        "description": "Digital product studio in India: websites, mobile apps, AI solutions and digital marketing."
+      }
+    </script>
+    <!-- fonts are self-hosted; preload only what the first paint needs -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <title>PinakXAI — Digital products for a brighter tomorrow</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div
+        style="
+          max-width: 640px;
+          margin: 20vh auto;
+          padding: 0 24px;
+          font:
+            16px/1.6 system-ui,
+            sans-serif;
+          color: #f4f1ea;
+        "
+      >
+        <h1 style="font-size: 28px">PinakXAI</h1>
+        <p>We design and build websites, mobile apps and AI solutions. This site needs JavaScript to run.</p>
+        <p>You can reach us at <a href="mailto:hello@pinakxai.com" style="color: #efb24a">hello@pinakxai.com</a>.</p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
